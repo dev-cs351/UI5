@@ -1,0 +1,36 @@
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+>
+    
+    <Dialog 
+        id="idDialog"
+        title="Info"
+        type="Message"
+        draggable="true"
+    >
+        <content>
+            <HBox class="sapUiResponsiveMargin">
+                <VBox class="sapUiResponsiveMargin">
+                    <HBox>
+                        <Label text="{customer>/Name}" design="Bold"/>
+                        <Text text="고객님, 가입을 환영합니다."/>
+                    </HBox>
+                    <Text text="나이: {customer>/Age}"/>
+                    <Text text="우편번호: {customer>/Zipcode}"/>
+                    <Text text="주소: {customer>/Address}"/>
+                </VBox>
+                <VBox class="sapUiResponsiveMargin">
+                    <Text text="연락처: {customer>/Phone}"/>
+                    <Text text="팩스: {customer>/Fax}"/>
+                </VBox>
+            </HBox>
+        </content>
+        <beginButton>
+            <Button 
+                text="OK" 
+                press=".onCloseDialog"/>
+        </beginButton>
+    </Dialog>
+
+</core:FragmentDefinition>

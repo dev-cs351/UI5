@@ -1,0 +1,78 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+>
+    <!-- 직원 상세 정보 Dialog -->
+    <Dialog
+        title="{i18n>dialogTitle}"
+        id="idDialog"
+    >
+        <content>
+            <!-- 기본정보, 주소정보 -->
+            <f:SimpleForm
+                layout="ColumnLayout"
+                columnsL="2"
+                columnsM="2"
+            >
+                <!-- 기본정보 -->
+                <core:Title text="{i18n>detailText}"/>
+                <Label text="{i18n>columnEmployID}"/>
+                <Text text="{EmployeeID}"/>
+
+                <Label text="{i18n>columnLastName}"/>
+                <Text text="{TitleOfCourtesy} {LastName}"/>
+
+                <Label text="{i18n>columnFirstName}"/>
+                <Text text="{FirstName}"/>
+
+                <Label text="{i18n>columnTitle}"/>
+                <Text text="{Title}"/>
+
+                <Label text="{i18n>columnHireDate}"/>
+                <Text text="{HireDate}"/>
+
+                <Label text="{i18n>columnCountry}"/>
+                <Text text="{BirthDate}"/>
+                
+                <!-- 주소정보 -->
+                <core:Title text="{i18n>addressText}"/>
+                <Label text="{i18n>textAddress}"/>
+                <Text text="{Address}"/>
+
+                <Label text="{i18n>textCity}"/>
+                <Text text="{City}"/>
+
+                <Label text="{i18n>textRegion}"/>
+                <Text text="{Region}"/>
+
+                <Label text="{i18n>textPostalCode}"/>
+                <Text text="{PostalCode}"/>
+
+                <Label text="{i18n>textHP}"/>
+                <Text text="{HomePhone}"/>
+
+                <Label text="{i18n>textExtention}"/>
+                <Text text="{Extension}"/>
+
+            </f:SimpleForm>
+            <!-- 상세 내용 Notes -->
+            <f:SimpleForm
+                layout="ResponsiveGridLayout"
+                columnsL="1"
+                columnsM="1"
+            >
+                <core:Title text="{i18n>noteText}"/>
+                <Text text="{Notes}"/>
+            </f:SimpleForm>
+        </content>
+        <!-- Dialog 닫기 버튼 -->
+        <beginButton>
+            <Button 
+                text="{i18n>textCloseButton}"
+                icon="sap-icon://navigation-left-arrow"   
+                press=".onCloseDialog" 
+            />
+        </beginButton>
+    </Dialog>
+</core:FragmentDefinition>

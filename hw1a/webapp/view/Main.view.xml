@@ -1,0 +1,40 @@
+<mvc:View controllerName="code.d07.hw1a.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core">
+    <Page id="page" title="{i18n>title}">
+        <content>
+            <f:SimpleForm 
+                class="sapUiResponsiveMargin"
+                width="auto"
+            >
+                <!-- 화면에 Input 생성 
+                    Input 받은 값을 toast 모델의 Message 에 넣는다. -->
+                <Label text="{i18n>inputText}"/>
+                <Input 
+                    id="idInput"
+                    value="{toast>/Message}"
+                    width="15rem"
+                />
+
+                <!-- Input ID 로 데이터를 호출하는 버튼 
+                    press 이벤트에서 onMessageToastByID 함수를 호출한다. -->
+                <Label text="{i18n>useInputTag}"/>
+                <Button 
+                    text="{i18n>messageText}" 
+                    width="6rem"
+                    press=".onMessageToastByID"/>
+
+                <!-- JSON Model 에서 데이터를 호출하는 버튼
+                    press 이벤트에서 onMessageToastByModel 함수를 호출한다. -->
+                <Label text="{i18n>useJSONModel}"/>
+                <Button 
+                    text="{i18n>messageText}" 
+                    width="6rem"
+                    press=".onMessageToastByModel"/>
+
+            </f:SimpleForm>
+        </content>
+    </Page>
+</mvc:View>

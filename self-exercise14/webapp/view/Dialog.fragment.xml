@@ -1,0 +1,21 @@
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+>
+
+    <Dialog
+        title="Info"
+        type="Message"
+    >
+        <content>
+            <VBox>
+                <Text text="이름: {customer>/Name}"/>
+                <Text text="나이: {customer>/Age}"/>    
+            </VBox>
+        </content>
+        <beginButton>
+            <Button text="OK"/>
+        </beginButton>
+    </Dialog>
+
+</core:FragmentDefinition>

@@ -1,0 +1,22 @@
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+>
+    <Dialog
+        title="필터링"
+    >
+
+        <content>
+            <Table 
+                items="{/Customers}"
+            >
+                
+            </Table>
+        </content>
+
+        <beginButton>
+            <Button text="OK"/>
+        </beginButton>
+    
+    </Dialog>
+</core:FragmentDefinition>

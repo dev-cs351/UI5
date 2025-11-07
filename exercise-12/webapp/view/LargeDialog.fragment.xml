@@ -1,0 +1,23 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+
+    <Dialog 
+        id="idLargeDialog"
+        title="Large Info"
+        type="Standard"
+        class="sapUiResposiveMargin">
+
+        <content>
+            <Text text="Dialog 테스트" class="sapUiResponsiveMargin"/>
+        </content>
+
+        <beginButton>
+            <Button 
+                text="OK"
+                press=".onCloseLargeDialog"/>
+        </beginButton>
+    
+    </Dialog>
+
+</core:FragmentDefinition>

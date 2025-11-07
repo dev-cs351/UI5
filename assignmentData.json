@@ -1,0 +1,21 @@
+{
+    "Member": [
+        {
+            "Name": "홍길동",
+            "Birthday": "1925-01-01",
+            "Age": 100,
+            "Gender": "M",
+            "Address": "시 구 동",
+            "_Details": [
+                {
+                "Menu": "김치찌개",
+                "Type": "한식",
+                "Day": "금요일",
+                "Price": 120000,
+                "Currency": "KRW",
+                "Place": "식당 이름"
+                }
+            ]
+        }
+    ]
+}

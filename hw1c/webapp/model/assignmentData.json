@@ -1,0 +1,251 @@
+{
+    "Member": [
+        {
+            "Name": "추다영",
+            "Birthday": "2002-09-16",
+            "Age": 24,
+            "Gender": "F",
+            "Address": "서울시 구로구 개봉동",
+            
+            "_Details": [
+                {
+                    "Menu": "비빔밥",
+                    "Type": "한식",
+                    "Day": "월요일",
+                    "Price": 8500,
+                    "Currency": "KRW",
+                    "Place": "진미식당"
+                },
+                {
+                    "Menu": "손수제비",
+                    "Type": "한식",
+                    "Day": "화요일",
+                    "Price": 9000,
+                    "Currency": "KRW",
+                    "Place": "황기순의손칼국수&왕돈까스"
+                },
+                {
+                    "Menu": "봉골레파스타",
+                    "Type": "양식",
+                    "Day": "수요일",
+                    "Price": 12000,
+                    "Currency": "KRW",
+                    "Place": "라비올리하우스"
+                },
+                {
+                    "Menu": "연어덮밥",
+                    "Type": "일식",
+                    "Day": "목요일",
+                    "Price": 11000,
+                    "Currency": "KRW",
+                    "Place": "스시마을"
+                },
+                {
+                    "Menu": "함박스테이크",
+                    "Type": "양식",
+                    "Day": "금요일",
+                    "Price": 12500,
+                    "Currency": "KRW",
+                    "Place": "브런치카페 리버"
+                }
+            ]
+        },
+        {
+            "Name": "김충수",
+            "Birthday": "1998-09-18",
+            "Age": 28,
+            "Gender": "M",
+            "Address": "서울시 광진구 구의동",
+            
+            "_Details": [
+                {
+                    "Menu": "가츠동",
+                    "Type": "일식",
+                    "Day": "월요일",
+                    "Price": 10000,
+                    "Currency": "KRW",
+                    "Place": "온동"
+                },
+                {
+                    "Menu": "알리오올리오",
+                    "Type": "양식",
+                    "Day": "화요일",
+                    "Price": 1000,
+                    "Currency": "KRW",
+                    "Place": "집"
+                },
+                {
+                    "Menu": "오리훈제찜",
+                    "Type": "한식",
+                    "Day": "수요일",
+                    "Price": 5000,
+                    "Currency": "KRW",
+                    "Place": "집"
+                },
+                {
+                    "Menu": "두부조림",
+                    "Type": "한식",
+                    "Day": "목요일",
+                    "Price": 2000,
+                    "Currency": "KRW",
+                    "Place": "집"
+                },
+                {
+                    "Menu": "후라이드치킨",
+                    "Type": "한식",
+                    "Day": "금요일",
+                    "Price": 18000,
+                    "Currency": "KRW",
+                    "Place": "후라이드FC"
+                }
+            ]
+        },
+        {
+            "Name": "이유림",
+            "Birthday": "2000-12-19",
+            "Age": 26,
+            "Gender": "F",
+            "Address": "서울특별시 성동구 옥수동",
+            "_Details": [
+                {
+                "Menu": "콩비지찌개 정식",
+                "Type": "한식",
+                "Day": "월요일",
+                "Price": 14500,
+                "Currency": "KRW",
+                "Place": "콩물에 빠진 두부"
+                },
+                {
+                "Menu": "미나리김치삼겹",
+                "Type": "한식",
+                "Day": "화요일",
+                "Price": 13500,
+                "Currency": "KRW",
+                "Place": "한남 무쇠김치삼겹"
+                },
+                                {
+                "Menu": "쌀베이글",
+                "Type": "디저트",
+                "Day": "수요일",
+                "Price": 2300,
+                "Currency": "KRW",
+                "Place": "파리바게트"
+                },
+                                {
+                "Menu": "까르보나라 파스타",
+                "Type": "양식",
+                "Day": "목요일",
+                "Price": 13800,
+                "Currency": "KRW",
+                "Place": "스탠다드빌라"
+                },
+                                {
+                "Menu": "슈프림 골드 양념치킨",
+                "Type": "한식",
+                "Day": "금요일",
+                "Price": 19000,
+                "Currency": "KRW",
+                "Place": "처갓집"
+                }
+            ]
+        },
+         {
+            "Name": "김지후",
+            "Birthday": "2000-10-28",
+            "Age": 26,
+            "Gender": "F",
+            "Address": "안양시 만안구 안양동",
+            "_Details": [
+                {
+                "Menu": "초밥",
+                "Type": "일식",
+                "Day": "월요일",
+                "Price": 16000,
+                "Currency": "KRW",
+                "Place": "초밥이찌바"
+                },
+                {
+                "Menu": "바지락 칼국수",
+                "Type": "한식",
+                "Day": "화요일",
+                "Price": 11000,
+                "Currency": "KRW",
+                "Place": "모락모락 칼국수"
+                },
+                                {
+                "Menu": "햄치즈토스트",
+                "Type": "디저트",
+                "Day": "수요일",
+                "Price": 3400,
+                "Currency": "KRW",
+                "Place": "이삭토스트"
+                },
+                                {
+                "Menu": "볶음해물짬뽕",
+                "Type": "중식",
+                "Day": "목요일",
+                "Price": 12000,
+                "Currency": "KRW",
+                "Place": "홍매"
+                },
+                                {
+                "Menu": "투움바 파스타",
+                "Type": "양식",
+                "Day": "금요일",
+                "Price": 27000,
+                "Currency": "KRW",
+                "Place": "아웃백 스테이크하우스"
+                }
+            ]
+        },
+        {
+            "Name": "김범진",
+            "Birthday": "2001-12-21",
+            "Age": 25,
+            "Gender": "M",
+            "Address": "서울시 노원구 상계동",
+            "_Details": [
+                {
+                "Menu": "오리훈제",
+                "Type": "한식",
+                "Day": "월요일",
+                "Price": 0,
+                "Currency": "KRW",
+                "Place": "집"
+                },
+                {
+                "Menu": "샤브샤브",
+                "Type": "한식",
+                "Day": "화요일",
+                "Price": 0,
+                "Currency": "KRW",
+                "Place": "집"
+                },
+                                {
+                "Menu": "소고기묵국",
+                "Type": "한식",
+                "Day": "수요일",
+                "Price": 0,
+                "Currency": "KRW",
+                "Place": "집"
+                },
+                                {
+                "Menu": "족발",
+                "Type": "한식",
+                "Day": "목요일",
+                "Price": 48000,
+                "Currency": "KRW",
+                "Place": "구구족"
+                },
+                                {
+                "Menu": "돈까스김치우동",
+                "Type": "일식",
+                "Day": "금요일",
+                "Price": 43000,
+                "Currency": "KRW",
+                "Place": "역전할머니맥주"
+                }
+            ]
+        }
+    ]
+}

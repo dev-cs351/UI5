@@ -1,0 +1,82 @@
+<mvc:View controllerName="code.d07.exam1.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"    
+    xmlns:core="sap.ui.core"
+>
+    <Page id="page" title="{i18n>title}">
+        <!-- 숫자 입력, 결과 출력 -->
+        <f:SimpleForm
+            layout="ResponsiveGridLayout"
+            editable="true"
+            class="sapUiResponsiveMargin"
+            width="auto"
+        >
+            <!-- 숫자 입력 -->
+            <core:Title text="{i18n>inputTitle}"/>
+            <Label text="{i18n>labelValue1}: "/>
+            <!--숫자입력 1
+                JSON 모델 Value1에 값을 저장
+                float 타입   -->
+            <Input 
+                value="{
+                    path: '/Value1',
+                    type:  'sap.ui.model.type.Float'
+                }"
+                required="true"
+            />
+
+            <!-- 숫자입력 2
+                JSON 모델 Value2에 값을 저장
+                float타입
+                최솟값 1     -->
+            <Label text="{i18n>labelValue2}: "/>
+            <Input 
+                value="{
+                    path: '/Value2',
+                    type:  'sap.ui.model.type.Float', 
+                    constraints: {
+                        minimum: 1
+                    }
+                }"
+                required="true"
+            />
+
+            <!-- 결과 출력 -->
+            <core:Title text="{i18n>resultTitle}"/>
+
+            <!-- 덧셈 출력 및 버튼 -->
+            <Label text="{i18n>labelAdd}: "/>
+            <Text text="{/Add}"
+            />
+            <Button 
+                text="{i18n>buttonAddText}"
+                press=".onAddButton"
+            />
+
+            <!-- 뺄셈 출력 및 버튼 -->
+            <Label text="{i18n>labelSub}: "/>
+            <Text text="{/Sub}"/>
+            <Button 
+                text="{i18n>buttonSubText}"
+                press=".onSubButton"
+            />
+
+            <!-- 곱셈 출력 및 버튼 -->
+            <Label text="{i18n>labelMul}: "/>
+            <Text text="{/Mul}"/>
+            <Button 
+                text="{i18n>buttonMulText}"
+                press=".onMulButton"
+            />
+
+            <!-- 나눗셈 출력 및 버튼 -->
+            <Label text="{i18n>labelDiv}: "/>
+            <Text text="{/Div}"/>
+            <Button 
+                text="{i18n>buttonDivText}"
+                press=".onDivButton"
+            />
+        </f:SimpleForm>
+    </Page>
+</mvc:View>

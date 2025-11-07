@@ -1,0 +1,59 @@
+<mvc:View controllerName="code.d07.exercise23.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+
+        <Table 
+            growing="true"
+            growingThreshold="10"
+            class="sapUiResponsiveMargin"
+            width="auto"
+            mode="SingleSelectMaster"
+            itemPress="onItemPress"
+            items="{
+                path: '/Customers',
+                sorter: [
+                    {path: 'Country', group: 'true'},
+                    {path: 'CustomerID'},
+                    {path: 'CompanyName'}
+                ]
+                
+            }"
+        >
+            <headerToolbar>
+                <Toolbar>
+                    <Text text="고객 목록 테이블"/>
+                    <ToolbarSpacer />
+                    <Button icon="sap-icon://sort"/>
+                </Toolbar>
+            </headerToolbar>
+            <columns>
+                <Column><header><Text text="{i18n>customerTableTitle}"></Text></header></Column>
+                <Column><header><Text text="{i18n>columnTextCusotmerID}"></Text></header></Column>
+                <Column><header><Text text="{i18n>columnTextCompanyName}"></Text></header></Column>
+                <Column><header><Text text="{i18n>columnTextContactName}"></Text></header></Column>
+                <Column><header><Text text="{i18n>columnTextAddress}"></Text></header></Column>
+                <Column><header><Text text="{i18n>columnTextPostalCode}"></Text></header></Column>
+                <Column><header><Text text="{i18n>columnTextCountry}"></Text></header></Column>
+                <Column><header><Text text="{i18n>columnTextPhone}"></Text></header></Column>
+            </columns>
+            
+            <items>
+                <ColumnListItem type="Active">
+                    <cells>
+                        <ObjectIdentifier title="{CustomerID}"/>
+                        <Text text="{CompanyName}"/>
+                        <Text text="{ContactName}"/>
+                        <Text text="{Address}"/>
+                        <Text text="{City}"/>
+                        <Text text="{PostalCode}"/>
+                        <Text text="{Country}"/>
+                        <Text text="{Phone}"/>
+                    </cells>
+                </ColumnListItem>
+            </items>
+
+        </Table>
+            
+    </Page>
+</mvc:View>

@@ -1,0 +1,92 @@
+<mvc:View controllerName="code.d07.hw1c.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form">
+    <Page id="page" title="{i18n>title}">
+        <content>
+            <!-- 조원 목록 테이블
+                - items 속성에서 Aggreation Binding을 이용해 모델 데이터를 불러온다.
+                - SingleSelectMaster 속성을 이용해 화면속 테이블에서 조원을 선택
+                - itemPress 이벤트를 통해 화면에서 선택한 조원의 데이터를 가져온다. -->
+            <Table
+                id="idListTable"
+                headerText="{i18n>listTableHeader}"
+                class="sapUiResponsiveMargin"
+                width="auto"
+                mode="SingleSelectMaster"
+                itemPress="onItemPress"
+                items="{/Member}"
+            >   
+                <!-- 테이블 칼럼 명-->
+                <columns>
+                    <Column><header><Text text="{i18n>nameText}"/></header></Column>
+                    <Column><header><Text text="{i18n>birthdaytText}"/></header></Column>
+                    <Column><header><Text text="{i18n>ageText}"/></header></Column>
+                    <Column><header><Text text="{i18n>genderText}"/></header></Column>
+                    <Column><header><Text text="{i18n>addressText}"/></header></Column>
+                </columns>
+
+                <!-- 테이블 내용
+                    - Table 태그의 itemPress 속성을 이용하기 위해 
+                    ColumnListItem 의 type 속성을 Active 로 설정한다.
+                    - Element Binding 을 이용해 
+                    Aggreation Binding으로 불러온 모델 데이터에서 원하는 데이터를 불러온다. -->
+                <items>
+                    <ColumnListItem type="Active"> 
+                        <ObjectIdentifier text="{Name}"/>
+                        <Text text="{Birthday}"/>
+                        <Text text="{Age}"/>
+                        <Text text="{Gender}"/>
+                        <Text text="{Address}"/>
+                    </ColumnListItem>
+                </items>
+            </Table>
+            
+            <!-- 조원별 저녁 메뉴 테이블 
+                - items 속성에 상대경로로 Aggreation Binding 을 이용하여 
+                모델 데이터에서 원하는 부분을 불러온다.
+                - headerText 속성에서 Expression Binding 을 이용하여 
+                조원 목록 테이블에서 조원을 선택한 경우와 선택하지 않은 경우로 출력값을 나눈다.-->
+            <Table
+                id="idDetailTable"
+                headerText="{= ${Name} ? ${Name} + ${i18n>detailTableHeader} : ${i18n>detailTableHeaderDefault} }"
+                class="sapUiResponsiveMargin"
+                width="auto"
+                items="{_Details}"
+            >
+                <!-- 테이블 칼럼 명-->
+                <columns>
+                    <Column><header><Text text="{i18n>menuText}"/></header></Column>
+                    <Column><header><Text text="{i18n>typeText}"/></header></Column>
+                    <Column><header><Text text="{i18n>priceText}"/></header></Column>
+                    <Column><header><Text text="{i18n>placeText}"/></header></Column>
+                    <Column><header><Text text="{i18n>dayText}"/></header></Column>
+                </columns>
+
+                <!-- 테이블 내용 
+                    - ObjectNumber 태그를 사용해서 가격과 통화를 같이 명시한다.
+                    -->
+                <items>
+                    <ColumnListItem>
+                        <ObjectIdentifier text="{Menu}"/>
+                        <Text text="{Type}"/>
+                        <ObjectNumber 
+                            number="{
+                                parts:[
+                                    {path: 'Price'},
+                                    {path: 'Currency'}
+                                ],
+                                type: 'sap.ui.model.type.Currency',
+                                formatOptions: {
+                                    showMeasure: false
+                                }
+                            }"
+                            unit="{Currency}"/>
+                        <Text text="{Place}"/>
+                        <Text text="{Day}"/>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+    </Page>
+</mvc:View>

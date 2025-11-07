@@ -1,0 +1,93 @@
+<mvc:View controllerName="code.d07.selfexercise14.controller.Overview"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core">
+    <Page id="page" title="{i18n>title}">
+        <content>
+            <Panel
+                id="idPanel"
+                headerText="고객"
+                class="sapUiResponsiveMargin"
+            >
+                <content>
+                    <f:SimpleForm layout="ColumnLayout" editable="true"> 
+                        <f:toolbar>
+                            <Toolbar>
+                                <ToolbarSpacer />
+                                <Button text="Press" press=".onOpenDialog" />
+                            </Toolbar>
+                        </f:toolbar>
+                        <f:content >
+                            <core:Title text="고객 정보 입력" />
+                            <Label text="이름" />
+                            <Input value="{customer>/Name}"/>
+
+                            <Label text="나이" />
+                            <Input value="{customer>/Age}"/>
+                        </f:content>
+                    </f:SimpleForm>
+                </content>
+            </Panel>
+
+            <Table 
+                headerText="고객 리스트"
+                items="{/Customers}"
+                growing="true"
+                growingThreshold="5"
+                class="sapUiResponsiveMargin"
+                mode="SingleSelectMaster"
+                selectionChange=".changeFunction"
+            >
+                <columns>
+                    <Column><header><Text text="고객 번호"></Text></header></Column>
+                    <Column><header><Text text="고객 이름"></Text></header></Column>
+                    <Column><header><Text text="이메일"></Text></header></Column>
+                    <Column><header><Text text="연락처"></Text></header></Column>
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <ObjectIdentifier text="{CustomerNumber}"/>
+                            <ObjectIdentifier text="{CustomerName}"/>
+                            <Text text="{Email}"></Text>
+                            <Text text="{Telephone}"></Text>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+
+            <Table 
+                id="idInfoTable"
+                headerText="고객 정보"
+                class="sapUiResponsiveMargin"
+                growing="true"
+                growingThreshold="5"
+                items="{_Bookings}"
+            >
+                <columns>
+                    <Column><header><Text text="예약 번호"></Text></header></Column>
+                    <Column><header><Text text="항공편"></Text></header></Column>
+                    <Column><header><Text text="비행 날짜"></Text></header></Column>
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <ObjectIdentifier title="{BookingNumber}"/>
+                            <Text text="{AirlineID} - {ConnectionNumber}"/>
+                            <Text text="{path: 'FlightDate',
+                                            type: 'sap.ui.model.type.Date',
+                                            formatOptions: {
+                                                source: {
+                                                    pattern: 'yyyy-MM-dd'
+                                                }, 
+                                                pattern: 'yy-MM-dd'
+                                                }
+                                            }"/>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+    </Page>
+</mvc:View>

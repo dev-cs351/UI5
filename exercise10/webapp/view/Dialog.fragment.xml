@@ -1,0 +1,17 @@
+<core:FragmentDefinition 
+    xmlns="sap.m"
+    xmlnscore="sap.ui.core"> 
+    <Dialog
+        id="dialog"
+        title="Info"
+        type="Message">
+        <content>
+            <Text text="Customer data is later saved via an OData service"/>
+        </content>
+        <beginButton>
+            <Button 
+                text="OK"
+                press=".onCloseDialog"/>
+        </beginButton>
+    </Dialog>
+</core:FragmentDefinition>

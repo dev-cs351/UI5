@@ -1,0 +1,28 @@
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+>
+    <!-- Dailog 출력 -->
+    <Dialog
+        id="idDialog"
+        title="{i18n>dialogTitle}"
+        type="Standard"
+    >
+        <!-- Dialog 내용물 -->
+        <content>
+            <Text 
+                text="{i18n>dialogContent}"
+                class="sapUiResponsiveMargin"/>
+            
+        </content>
+        <!-- Dialog 창 종료를 위한 버튼 -->
+        <beginButton>
+            <Button 
+                id="idCloseDialogButton"
+                text="{i18n>dialogButtonText}"
+                press=".onCloseDialog"
+            />
+        </beginButton>
+    </Dialog>
+
+</core:FragmentDefinition>

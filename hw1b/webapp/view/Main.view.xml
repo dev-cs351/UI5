@@ -1,0 +1,21 @@
+<mvc:View controllerName="code.d07.hw1b.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form">
+    <Page id="page" title="{i18n>title}">
+        <content>
+            <f:SimpleForm 
+                class="sapUiResponsiveMargin"
+                width="auto"
+            >
+                <!-- Dialog Fragment 를 호출하는 버튼 -->
+                <Label text="{i18n>buttonLabel}"/>
+                <Button 
+                    id="idButton"
+                    text="{i18n>buttonText}"
+                    press=".onOpenDialog"
+                    width="6rem"/>
+            </f:SimpleForm>
+        </content>
+    </Page>
+</mvc:View>

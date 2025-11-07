@@ -1,0 +1,27 @@
+<mvc:View controllerName="code.d07.hw1a2.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+    
+        <content>
+
+            <Label 
+                text="값 입력"
+                labelFor="idInput"/>
+            <Input 
+                id="idInput"
+                value="{/Value}"
+            />
+            <Button 
+                text="출력"
+                press="onClickButton"/>
+
+            <Button 
+                text="출력(JSON Model)"
+                press="onClickJsonButton"
+            />
+
+        </content>
+
+    </Page>
+</mvc:View>

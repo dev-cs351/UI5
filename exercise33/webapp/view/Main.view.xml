@@ -1,0 +1,160 @@
+<mvc:View controllerName="code.d07.exercise33.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+>
+    <Page id="page" title="{i18n>title}">
+        <!-- 멤버 신규 입력 -->
+        <Panel
+            class="sapUiResponsiveMargin"
+            width="auto"
+        >
+            <headerToolbar>
+                <Toolbar>
+                    <Title text="{i18n>newMemberPanelTitle}"/>
+                    <ToolbarSpacer />
+                    <Button 
+                        text="{i18n>addButtonText}"
+                        icon="sap-icon://create"
+                        press=".onButtonAddPress"
+                    />
+                </Toolbar>
+            </headerToolbar>
+            <content>
+                <f:SimpleForm>
+                    <f:content>
+                        
+                        <!-- 이름 -->
+                        <Label 
+                            text="{i18n>labelName}"
+                            labelFor="idNameInput"
+                        />
+                        <Input 
+                            id="idNameInput"
+                            value="{
+                                path: '/Input/Name',
+                                type: 'sap.ui.model.type.String',
+                                constraints: {
+                                    minLength: 1
+                                }
+                            }"
+                            required="true"
+                        />
+
+                        <!-- 성별 -->
+                        <Label text="{i18n>labelGender}"/>
+                        <VBox>
+                            <RadioButtonGroup
+                                id="idRadioButtonGroup"
+                            >
+                                <RadioButton text="{i18n>textMale}" selected="true" />
+                                <RadioButton text="{i18n>textFemale}" />
+                            </RadioButtonGroup>
+                            <ComboBox 
+                                id="idGenderComboBox"
+                                selectedKey="Init"
+                            >
+                                <items>
+                                    <core:Item key="Init" text="{i18n>textGenderInit}"/>
+                                    <core:Item key="M" text="{i18n>textMale}"/>
+                                    <core:Item key="F" text="{i18n>textFemale}"/>
+                                </items>
+                            </ComboBox>
+                        </VBox>
+
+                        <!-- 나이 -->
+                        <Label text="{i18n>labelAge}"/>
+                        <Input value="{
+                            path: '/Input/Age',
+                            type: 'sap.ui.model.type.Integer',
+                            constraints: {
+                                minimum: 1,
+                                maximum: 999
+                            }
+                        }"/>
+
+                        <!-- 주소 -->
+                        <Label text="{i18n>labelAddress}"/>
+                        <Input value="{/Input/Address}"/>
+
+                        <!-- 소지금 -->
+                        <Label text="{i18n>labelCash}"/>
+                        <Input 
+                            value="{
+                                parts: [
+                                    '/Input/Cash',
+                                    '/Input/Currency'
+                                ],
+                                type: 'sap.ui.model.type.Currency',
+                                formatOptions: {
+                                    showMeasure: false
+                                },
+                                constraints: {
+                                    minimum: 0
+                                }
+                            }"
+                        />
+                        <Text text="{/Input/Currency}" class="sapUiSmallMarginTopBottom"/>
+
+                    </f:content>
+                </f:SimpleForm>
+            </content>
+        </Panel>
+
+        <!-- 멤버 목록 -->
+        <Panel 
+            headerText="{i18n>oldMemberPanelTitle}"
+            class="sapUiResponsiveMargin"
+            width="auto"
+        >
+            <Table
+                id="idMemberTable"
+                items="{/Members}"
+                mode="SingleSelectLeft"
+            >
+                <headerToolbar>
+                    <Toolbar>
+                        <ToolbarSpacer />
+                        <Button 
+                            text="{i18n>deleteButton}"
+                            icon="sap-icon://delete"
+                            press=".onButtonDeletePress"
+                        />
+                    </Toolbar>
+                </headerToolbar>
+                <columns>
+                    <Column><header><Text text="{i18n>labelName}"/></header></Column>
+                    <Column><header><Text text="{i18n>labelGender}"/></header></Column>
+                    <Column><header><Text text="{i18n>labelAge}"/></header></Column>
+                    <Column><header><Text text="{i18n>labelAddress}"/></header></Column>
+                    <Column><header><Text text="{i18n>labelCash}"/></header></Column>
+                </columns>
+                
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <ObjectIdentifier title="{Name}"/>
+                            <Text text="{Gender}"/>
+                            <Text text="{Age}"/>
+                            <Text text="{Address}"/>
+                            <ObjectNumber 
+                                number="{
+                                    parts: [
+                                        'Cash',
+                                        'Currency'
+                                    ],
+                                    type: 'sap.ui.model.type.Currency',
+                                    formatOptions: {
+                                        showMeasure: false
+                                    }
+                                }"
+                                unit="{Currency}"
+                            />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </Panel>
+    </Page>
+</mvc:View>
