@@ -13,27 +13,33 @@
             width="auto"
         >
             <!-- 숫자 입력 -->
-            <core:Title text="{i18n>inputTitle}"/>
-            <Label text="{i18n>labelValue1}: "/>
-            <!--숫자입력 1
-                JSON 모델 Value1에 값을 저장
-                float 타입   -->
+            <core:Title text="{i18n>formContainerInputTitle}"/>
+            <!-- 숫자입력 1 -->
+        <!-- 
+            *입력과 라벨은 항상 labelfor로 묶어준다.* 
+        -->
+            <Label 
+                text="{i18n>labelInputValue1}"
+                labelFor="idValue1"
+            />
             <Input 
+                id="idValue1"
                 value="{
-                    path: '/Value1',
+                    path: '/Input/num1',
                     type:  'sap.ui.model.type.Float'
                 }"
                 required="true"
             />
 
-            <!-- 숫자입력 2
-                JSON 모델 Value2에 값을 저장
-                float타입
-                최솟값 1     -->
-            <Label text="{i18n>labelValue2}: "/>
+            <!-- 숫자입력 2 -->
+            <Label 
+                text="{i18n>labelInputValue2}"
+                labelFor="idValue2"
+            />
             <Input 
+                id="idValue2"
                 value="{
-                    path: '/Value2',
+                    path: '/Input/num2',
                     type:  'sap.ui.model.type.Float', 
                     constraints: {
                         minimum: 1
@@ -43,39 +49,39 @@
             />
 
             <!-- 결과 출력 -->
-            <core:Title text="{i18n>resultTitle}"/>
+            <core:Title text="{i18n>formContainerResultTitle}"/>
 
             <!-- 덧셈 출력 및 버튼 -->
-            <Label text="{i18n>labelAdd}: "/>
-            <Text text="{/Add}"
+            <Label text="{i18n>labelAdd}"/>
+            <Text text="{/Output/Add}"
             />
             <Button 
-                text="{i18n>buttonAddText}"
-                press=".onAddButton"
+                text="{i18n>buttonTextAdd}"
+                press=".onButtonAdd"
             />
 
             <!-- 뺄셈 출력 및 버튼 -->
-            <Label text="{i18n>labelSub}: "/>
-            <Text text="{/Sub}"/>
+            <Label text="{i18n>labelSub}"/>
+            <Text text="{/Output/Sub}"/>
             <Button 
-                text="{i18n>buttonSubText}"
-                press=".onSubButton"
+                text="{i18n>buttonTextSub}"
+                press=".onButtonSub"
             />
 
             <!-- 곱셈 출력 및 버튼 -->
-            <Label text="{i18n>labelMul}: "/>
-            <Text text="{/Mul}"/>
+            <Label text="{i18n>labelMul}"/>
+            <Text text="{/Output/Mul}"/>
             <Button 
-                text="{i18n>buttonMulText}"
-                press=".onMulButton"
+                text="{i18n>buttonTextMul}"
+                press=".onButtonMul"
             />
 
             <!-- 나눗셈 출력 및 버튼 -->
-            <Label text="{i18n>labelDiv}: "/>
-            <Text text="{/Div}"/>
+            <Label text="{i18n>labelDiv}"/>
+            <Text text="{/Output/Div}"/>
             <Button 
-                text="{i18n>buttonDivText}"
-                press=".onDivButton"
+                text="{i18n>buttonTextDiv}"
+                press=".onButtonDiv"
             />
         </f:SimpleForm>
     </Page>

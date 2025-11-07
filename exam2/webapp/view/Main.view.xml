@@ -2,8 +2,99 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
     xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
 >
     <Page id="page" title="{i18n>title}">
+
+        <!-- 신규 상품 등록 -->
+        <Panel 
+            class="sapUiResponsiveMargin"
+            width="auto"
+            expandable="true"
+            expanded="true"
+        >
+            <headerToolbar>
+                <Toolbar>
+                    <Title text="{i18n>newGoodsPanelTitle}"/>
+                    <ToolbarSpacer />
+                    <Button 
+                        text="{i18n>addButtonText}"
+                        icon="sap-icon://add"
+                        press=".onButtonAddNewGoods"
+                    />
+                </Toolbar>
+            </headerToolbar>
+            <content>
+                <f:SimpleForm>
+                    <Label text="창고" labelFor="idRadioButton" />
+                    <!-- columns는 한 줄에 radio button을 몇개나 보이게 할 건지 -->
+                    <RadioButtonGroup
+                        id="idRadioButton"
+                        columns="2"
+                    >
+                        <RadioButton 
+                            selected="{new>/Input/City/Seoul}" 
+                            text="서울"
+                        />
+                        <RadioButton  
+                            selected="{new>/Input/City/Busan}"
+                            text="부산"
+                        />
+                    </RadioButtonGroup>
+
+                    <!-- 제품명 -->
+                    <Label text="제품명" labelFor="idInputProductName" />
+                    <Input 
+                        id="idInputProductName"
+                        placeholder="제품명을 입력하세요."
+                        value="{
+                            path: 'new>/Input/ProductName',
+                            type: 'sap.ui.model.type.String',
+                            constraints: {
+                                minLength: 1
+                            }
+                        }"
+                        required="true"
+                    />
+
+                    <!-- 가격 -->
+                    <Label text="가격" labelFor="idInputPrice" />
+                    <Input 
+                        id="idInputPrice"
+                        value="{
+                            path: 'new>/Input/Price',
+                            type: 'sap.ui.model.type.Float',
+                            constraints: {
+                                minimum: 0,
+                                maximum: 1000000000000
+                            }
+                        }"
+                    />
+                    <Input value="{new>/Input/Currency}" editable="false"/>
+                    
+                    <!-- 재고상태 -->
+                    <Label text="재고상태" labelFor="idInputProductState" />
+                    <Input 
+                        id="idInputProductState"
+                        value="{
+                            path: 'new>/Input/Quantity',
+                            type: 'sap.ui.model.type.Integer',
+                            constraints: {
+                                minimum: 0,
+                                maximum: 1000000000000
+                            },
+                            formatOptions: {
+                                groupingEnabled: true
+                            }
+                        }"
+                    />
+                    <Input value="{new>/Input/Unit}" editable="false"/>
+
+                </f:SimpleForm>
+            </content>
+        </Panel>
+
+
         <!-- 상품 재고 목록 -->
         <Panel
             class="sapUiResponsiveMargin"
@@ -14,21 +105,29 @@
                 <Toolbar>
                     <Title text="{i18n>toolbarTitle}"/>
                     <ToolbarSpacer />
-                    <Label text="{i18n>labelComboBox}"/>
+                    <Label 
+                        text="{i18n>labelComboBox}"
+                        labelFor="idComboBox"
+                    />
                     <!-- ComboBox에서 세 가지 아이템 선택 가능
                         기본 값은 "전체"
                         선택시 selectionChange 이벤트를 이용해 changingComboBoxKey 함수 실행 -->
                     <ComboBox
                         id="idComboBox"
-                        selectedKey="{i18n>textKeyAll}"
+                        selectedKey="{i18n>textComboKeyAll}"
                         selectionChange=".changingComboBoxKey"
                     >
                         <items>
-                            <core:Item key="{i18n>textKeyAll}" text="{i18n>textAll}"/>
-                            <core:Item key="{i18n>textKeyBusan}" text="{i18n>textBusan}"/>
-                            <core:Item key="{i18n>textKeySeoul}" text="{i18n>textSeoul}"/>
+                            <core:Item key="{i18n>textComboKeyAll}" text="{i18n>textComboAll}"/>
+                            <core:Item key="{i18n>textComboKeyBusan}" text="{i18n>textComboBusan}"/>
+                            <core:Item key="{i18n>textComboKeySeoul}" text="{i18n>textComboSeoul}"/>
                         </items>
                     </ComboBox>
+                    <Button 
+                        icon="sap-icon://delete"
+                        text="삭제"
+                        press=""
+                    />
                 </Toolbar>
             </headerToolbar>
             <!-- model/ex2data.json에서 Products 데이터 바인딩
@@ -37,10 +136,10 @@
                 id="idList"
                 items="{
                     path: '/Products',
-                    sorter: [{
+                    sorter: {
                         path: 'Storage',
                         group: true
-                    }]
+                    }
                 }"
             >
                 <items>
@@ -57,6 +156,23 @@
                         }"
                         numberUnit="{Unit}"
                     >
+                        <!-- 창고, 가격 -->
+                        <attributes>
+                            <ObjectAttribute 
+                                title="{i18n>textStorage}"
+                                text="{Storage}"
+                            />
+                            <ObjectAttribute 
+                                title="{i18n>textPrice}"
+                                text="{
+                                    parts: [
+                                        'Price',
+                                        'Currency'
+                                    ],
+                                    type: 'sap.ui.model.type.Currency'
+                                }"
+                            />
+                        </attributes>
                         <!-- 재고상태 -->
                         <firstStatus>
                             <ObjectStatus 
@@ -71,28 +187,9 @@
                                 }"
                             />
                         </firstStatus>
-                        <!-- 창고, 가격 -->
-                        <attributes>
-                            <ObjectAttribute 
-                                title="{i18n>textWarehouse}"
-                                text="{Storage}"
-                            />
-                            <ObjectAttribute 
-                                title="{i18n>textPrice}"
-                                text="{
-                                    parts: [
-                                        'Price',
-                                        'Currency'
-                                    ],
-                                    type: 'sap.ui.model.type.Currency'
-                                }"
-                            />
-                        </attributes>
                     </ObjectListItem>
                 </items>
             </List>
         </Panel>
-
-
     </Page>
 </mvc:View>
