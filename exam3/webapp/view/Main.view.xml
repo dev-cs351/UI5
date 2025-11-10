@@ -1,6 +1,7 @@
 <mvc:View controllerName="code.d07.exam3.controller.Main"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
+    xmlns:f="sap.f"
 >
     <Page id="page" title="{i18n>title}">
         <!-- 직원 목록 테이블 
@@ -12,21 +13,21 @@
             headerText="{i18n>tableTitle}"
             class="sapUiResponsiveMargin"
             width="auto"
-            mode="SingleSelectMaster"
-            selectionChange=".onOpenDetailDialog"
         >
+            <CheckBox text="test"/>
             <columns>
-                <Column><header><Text text="{i18n>columnEmployID}"/></header></Column>
-                <Column><header><Text text="{i18n>columnLastName}({i18n>columnLastNameDetail})"/></header></Column>
-                <Column><header><Text text="{i18n>columnFirstName}({i18n>columnFirstNameDetail})"/></header></Column>
-                <Column><header><Text text="{i18n>columnTitle}({i18n>columnTitleDetail})"/></header></Column>
-                <Column><header><Text text="{i18n>columnHireDate}"/></header></Column>
-                <Column><header><Text text="{i18n>columnCountry}"/></header></Column>
+                <Column><header><Text text="{i18n>columnEmployID}"  /></header></Column>
+                <Column><header><Text text="{i18n>columnTItleOfCourtesy}({i18n>columnTItleOfCourtesyDetail})"/></header></Column>
+                <Column><header><Text text="{i18n>columnFirstName}({i18n>columnFirstNameDetail})"            /></header></Column>
+                <Column><header><Text text="{i18n>columnTitle}({i18n>columnTitleDetail})"                    /></header></Column>
+                <Column><header><Text text="{i18n>columnHireDate}"  /></header></Column>
+                <Column><header><Text text="{i18n>columnCountry}"   /></header></Column>
             </columns>
             <items>
                 <!-- Navigation 타입 설정 -->
                 <ColumnListItem
                     type="Navigation"
+                    press=".onOpenDetailDialog"
                 >
                     <ObjectIdentifier title="{EmployeeID}"/>
                     <Text text="{TitleOfCourtesy} {LastName}"/>
@@ -44,5 +45,14 @@
                 </ColumnListItem>
             </items>
         </Table>
+
+        <f:Card 
+            class="sapUiResponsiveMargin"
+            width="300px"
+        >
+            <f:header>
+
+            </f:header>
+        </f:Card>
     </Page>
 </mvc:View>

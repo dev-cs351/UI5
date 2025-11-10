@@ -9,12 +9,12 @@
         <t:Table
             rows="{ 
                 path: '/Orders',
-                filters: [{
+                filters: {
                     path: 'OrderDate',
                     operator: 'BT',
                     value1: '1996-07-01',
                     value2: '1996-07-31'
-                }]
+                }
             }"
             class="sapUiResponsiveMargin"
             width="auto"
@@ -23,6 +23,11 @@
             rowSelectionChange=".onOpenDetailView"
         >
             <!-- rowmodes 사용 -->
+            <!-- 
+                rowmodes: t:table은 10 행만 출력하는데,
+                        더 많은 행을 출력하기 위해서 rowmodes 라이브러리를 사용한다.
+                    Auto: 화면의 높이를 Auto로 설정한다.
+            -->
             <t:rowMode>
                 <rowmodes:Auto />
             </t:rowMode>
@@ -98,6 +103,24 @@
                                 pattern: 'yyyy.MM.dd'
                             }
                         }"/>
+                    </t:template>
+                </t:Column>
+                <!-- 상태 -->
+                <t:Column>
+                    <t:label>
+                        <Label text="{i18n>columnState}"/>
+                    </t:label>
+                    <t:template>
+                        <ObjectStatus 
+                            text="{
+                                parts:['RequiredDate', 'ShippedDate'],
+                                formatter: '.formatter.stateTextMaker'
+                            }"
+                            state="{
+                                parts:['RequiredDate', 'ShippedDate'],
+                                formatter: '.formatter.stateMaker'
+                            }"
+                        />
                     </t:template>
                 </t:Column>
             </t:columns>

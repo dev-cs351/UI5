@@ -30,53 +30,55 @@
                     <!-- 고객정보 -->
                     <core:Title text="{i18n>customerInfoText}"/>
                     <Label text="{i18n>textID}"/>
-                    <Text text="{Customer/CustomerID}"/>
+                    <Text  text="{Customer/CustomerID}"/>
                     
                     <Label text="{i18n>textCompanyName}"/>
-                    <Text text="{Customer/CompanyName}"/>
+                    <Text  text="{Customer/CompanyName}"/>
                     
                     <Label text="{i18n>textContactName}"/>
-                    <Text text="{Customer/ContactName}"/>
+                    <Text  text="{Customer/ContactName}"/>
                     
                     <Label text="{i18n>textContactTile}"/>
-                    <Text text="{Customer/ContactTitle}"/>
+                    <Text  text="{Customer/ContactTitle}"/>
                     
                     <!-- 주소정보 -->
                     <core:Title text="{i18n>addressInfoText}"/>
                     <Label text="{i18n>textAddress}"/>
-                    <Text text="{Customer/Address}"/>
+                    <Text  text="{Customer/Address}"/>
                     
                     <Label text="{i18n>textCity}"/>
-                    <Text text="{Customer/City}"/>
+                    <Text  text="{Customer/City}"/>
 
                     <Label text="{i18n>textRegion}"/>
-                    <Text text="{Customer/Region}"/>
+                    <Text 
+                           text="{= ${Customer/Region} ? ${Customer/Region} : 'None' }"
+                    />
 
                     <Label text="{i18n>textPostalCode}"/>
-                    <Text text="{Customer/PostalCode}"/>
+                    <Text  text="{Customer/PostalCode}"/>
 
                     <Label text="{i18n>textCountry}"/>
-                    <Text text="{Customer/Country}"/>
+                    <Text  text="{Customer/Country}"/>
 
                     <Label text="{i18n>textPhone}"/>
-                    <Text text="{Customer/Phone}"/>
+                    <Text  text="{Customer/Phone}"/>
 
                     <Label text="{i18n>textFax}"/>
-                    <Text text="{Customer/Fax}"/>
+                    <Text  text="{Customer/Fax}"/>
 
                     <!-- 담당직원정보 -->
                     <core:Title text="{i18n>employeeInfoText}"/>
                     <Label text="{i18n>textID}"/>
-                    <Text text="{Employee/EmployeeID}"/>
+                    <Text  text="{Employee/EmployeeID}"/>
 
                     <Label text="{i18n>textLastName}"/>
-                    <Text text="{Employee/TitleOfCourtesy} {Employee/LastName}"/>
+                    <Text  text="{Employee/TitleOfCourtesy} {Employee/LastName}"/>
 
                     <Label text="{i18n>textFirstName}"/>
-                    <Text text="{Employee/FirstName}"/>
+                    <Text  text="{Employee/FirstName}"/>
 
                     <Label text="{i18n>textContactTile}"/>
-                    <Text text="{Employee/Title}"/>
+                    <Text  text="{Employee/Title}"/>
                 </f:content>
             </f:SimpleForm>
 
@@ -90,7 +92,7 @@
                     rows="{
                         path: 'Order_Details',
                         parameters: {
-                        expand: 'Product'
+                            expand: 'Product'
                         }
                     }"
                     
@@ -115,7 +117,10 @@
                             </t:template>
                         </t:Column>
 
-                        <!-- 개당가격, 수량, 할인율, 금액은 End 정렬 -->
+                        <!-- 
+                            개당가격, 수량, 할인율, 금액은 End 정렬 
+                             -> 숫자의 자릿수를 정렬시킬 수 있다.
+                        -->
                         <!-- 개당가격 -->
                         <t:Column
                             hAlign="End"
@@ -157,8 +162,8 @@
                                         ],
                                         type: 'sap.ui.model.type.Unit',
                                         formatOptions: {
-                                        showMeasure: false
-                                    }
+                                            showMeasure: false
+                                        }
                                     }"
                                     unit="{model>/Unit}"
                                 />

@@ -126,7 +126,7 @@
                     <Button 
                         icon="sap-icon://delete"
                         text="삭제"
-                        press=""
+                        press=".onButtonDeletePress"
                     />
                 </Toolbar>
             </headerToolbar>
@@ -141,6 +141,7 @@
                         group: true
                     }
                 }"
+                mode="MultiSelect"
             >
                 <items>
                     <!-- 각 오브젝트 마다 이름,창고 장소, 가격, 수량, 재고상태 표기 -->

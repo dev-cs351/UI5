@@ -1,8 +1,9 @@
 sap.ui.define( [
-	"sap/ui/model/type/Currency"
-], (CurrencyType) => {
+	"sap/ui/model/type/Currency",
+	"sap/ui/core/library"
+], (CurrencyType, coreLibrary) => {
 	"use strict"
-
+	
 	// 통화 타입을 적용하기 위한 객체 선언
 	var oCurrencyType = new CurrencyType({
 		showMeasure: false,
@@ -22,6 +23,31 @@ sap.ui.define( [
 			var sFormattedAmout = oCurrencyType.formatValue([fAmount, sCurrency], "string");
 
 			return sFormattedAmout;
+		},
+		stateMaker(oRequiredDate, oShippedDate) {
+			// alert(1);
+			let monthDiff = oShippedDate.getMonth() - oRequiredDate.getMonth();
+			let dateDiff  = oShippedDate.getDate() - oRequiredDate.getDate();
+
+			if( monthDiff > 0 ) {
+				return coreLibrary.ValueState.Error;
+			} else if( monthDiff == 0 && dateDiff >= 0 ) {
+				return coreLibrary.ValueState.Error;
+			} else {
+				return coreLibrary.ValueState.Success;
+			}
+		},
+		stateTextMaker(oRequiredDate, oShippedDate) {
+			let monthDiff = oShippedDate.getMonth() - oRequiredDate.getMonth();
+			let dateDiff  = oShippedDate.getDate() - oRequiredDate.getDate();
+
+			if( monthDiff > 0 ) {
+				return "배송 실패";
+			} else if( monthDiff == 0 && dateDiff >= 0 ) {
+				return "배송 실패";
+			} else {
+				return "배송 성공";
+			}
 		}
 	}
 } )

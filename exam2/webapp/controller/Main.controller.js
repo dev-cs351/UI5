@@ -80,7 +80,7 @@ sap.ui.define([
             if ( sProductName && sProductName.length > 0 ) {
                 // 정상
             } else {
-               MessageBox.error("제품명이 비어있습니다.");
+                MessageBox.error("제품명이 비어있습니다.");
                 return ;
             }
 
@@ -136,9 +136,55 @@ sap.ui.define([
             // 경로 /Products에 새로운 상품 정보가 추가되었으므로,
             // 화면에 반영하기 위해 Model 정보를 새로고침 한다.
             oModel.refresh();
-            
+
             // new 모델의 경로 /Input에는 입력한 데이터를 초기화 한다.
-            oNewProduct.setProperty("/Input", this._initData());
+            oNewModel.setProperty("/Input", this._initData());
+        },
+        onButtonDeletePress() {
+            // alert(1);
+
+            // List 에서 사용되는 데이터 제품 목록
+            let oView = this.getView();
+            let oModel = oView.getModel();
+            let aProducts = oModel.getProperty("/Products");
+            
+            // List 에서 선택한 항목 가져오기
+            let oList = oView.byId("idList");
+            let aSelectedItems = oList.getSelectedItems();
+
+            // 선택한 항목 정보를 토대로 aProducts에서 삭제할 데이터를 찾아서 삭제
+            // JSON 모델은 데이터가 배열로 이뤄져 있는데, 배열의 데이터를 접근할 때는 Index로 접근한다.
+            // 삭제할 데이터의 Index를 알아야 하므로 선택한 항목들마다 연결된 Model 경로에서 
+            // Index 정보를 가져와 배열에 따로 보관한다.
+            let aIndex = [];
+            for( let oItem of aSelectedItems ) {
+                // getBIndingContextPath() : 연결된 모델의 경로
+                let path = oItem.getBindingContextPath();
+                // console.log(path);  // /Products/[index number]
+                let index = path.split("/").pop();
+                aIndex.push(index);
+            }
+            
+            /** 
+                // 오름차순 정렬
+                aIndex.sort();    
+                let deleteCount = 0;
+                for( let index of aIndex ) {
+                    // 특정 index부터 1개만 삭제하는 문법: splice
+                    aProducts.splice(index - deleteCount++, 1);
+                }
+             */
+            
+            // 내림차순 정렬
+            let aDescIndex = aIndex.sort((a, b) => b - a);
+            for (let index of aDescIndex) {
+                aProducts.splice(index, 1);
+            }
+
+            oModel.refresh();
+
+            // List에 항목을 선택한 정보를 초기화 한다.
+            oList.removeSelections(true);
         }
     });
 });
